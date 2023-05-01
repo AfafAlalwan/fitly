@@ -2,7 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main(){
-  runApp(MaterialApp(home: Fitly()));
+  runApp(MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(
+            fontFamily: "Ysabeau",
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: "Ysabeau",
+            fontSize: 14,
+            fontWeight: FontWeight.normal,
+          ),
+          displayLarge: TextStyle(
+            fontFamily: "DancingScript",
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.italic,
+            color: Colors.orangeAccent[700],
+          ),
+          // add more styles as needed...
+        ),
+      ),
+      home: Fitly()));
 }
 
 class Fitly extends StatefulWidget {
@@ -13,15 +36,18 @@ class Fitly extends StatefulWidget {
 }
 
 class _FitlyState extends State<Fitly> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
+  List<Color> _iconColors = [Colors.orangeAccent.shade700,
+    Colors.orangeAccent, Colors.orangeAccent.shade700]; // initial colors for each icon
 
   List<Widget> _pages = [
-    HomePage(),
-    SearchPage(),
+    ActivityPage(),
+    NutritionPage(),
     ProfilePage(),
   ];
 
-  PageController _pageController = PageController(initialPage: 0);
+  PageController _pageController = PageController(initialPage: 1);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +63,10 @@ class _FitlyState extends State<Fitly> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.blueGrey[700],
         currentIndex: _currentIndex,
+
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -46,7 +75,10 @@ class _FitlyState extends State<Fitly> {
               duration: Duration(milliseconds: 500),
               curve: Curves.easeInOut,
             );
-            print(index);
+            _iconColors = [Colors.orangeAccent.shade700,
+            Colors.orangeAccent.shade700, Colors.orangeAccent.shade700];
+            _iconColors[_currentIndex] = Colors.orangeAccent;
+           // print(index);
           });
         },
         items: [
@@ -56,19 +88,10 @@ class _FitlyState extends State<Fitly> {
               height: 30,
               child: SvgPicture.asset(
                 "assets/icons/fitness-outline.svg",
+                color: _iconColors[0],
               ),
             ),
-            label: 'activity',
-          ),
-          BottomNavigationBarItem(
-            icon:  Container(
-              width: 30,
-              height: 30,
-              child: SvgPicture.asset(
-                "assets/icons/person-outline.svg",
-              ),
-            ),
-            label: 'profile',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon:  Container(
@@ -76,9 +99,22 @@ class _FitlyState extends State<Fitly> {
               height: 30,
               child: SvgPicture.asset(
                 "assets/icons/nutrition-outline.svg",
+                color: _iconColors[1],
               ),
             ),
-            label: 'nutrition',
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon:  Container(
+              width: 30,
+              height: 30,
+              child: SvgPicture.asset(
+                "assets/icons/person-outline.svg",
+                color: _iconColors[2],
+
+              ),
+            ),
+            label: '',
           ),
         ],
       ),
@@ -86,29 +122,43 @@ class _FitlyState extends State<Fitly> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class ActivityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fitly'),
+        backgroundColor: Colors.blueGrey[700],
+        title: Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
       ),
       body: Center(
-        child: Text('This is the Home page'),
+        child: Text('This is the Activity page'),
       ),
     );
   }
 }
 
-class SearchPage extends StatelessWidget {
+class NutritionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        backgroundColor: Colors.blueGrey[700],
+        title:  Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/search-outline.svg",
+              color: Colors.orangeAccent[700],
+            ),
+
+            onPressed: () {
+              // functionality to search for people
+            },
+          ),
+        ],
       ),
       body: Center(
-        child: Text('This is the Search page'),
+        child: Text('This is the nutrition page were blogs are shown'),
       ),
     );
   }
@@ -119,16 +169,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.blueGrey[700],
+        title: Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Text('Widget 1'),
-            Text('Widget 2'),
-            SvgPicture.asset("assets/icons/fitness-outline.svg"),
-          ],
-        ),
+        child: Text('This is the profile page'),
       ),
     );
   }
