@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'pages.dart';
 
 void main(){
   runApp(MaterialApp(
@@ -7,7 +8,7 @@ void main(){
         textTheme: TextTheme(
           bodyLarge: TextStyle(
             fontFamily: "Ysabeau",
-            fontSize: 16,
+            fontSize: 25,
             fontWeight: FontWeight.normal,
           ),
           bodyMedium: TextStyle(
@@ -122,59 +123,4 @@ class _FitlyState extends State<Fitly> {
   }
 }
 
-class ActivityPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[700],
-        title: Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
-      ),
-      body: Center(
-        child: Text('This is the Activity page'),
-      ),
-    );
-  }
-}
 
-class NutritionPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[700],
-        title:  Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
-        actions: [
-          IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/search-outline.svg",
-              color: Colors.orangeAccent[700],
-            ),
-
-            onPressed: () {
-              // functionality to search for people
-            },
-          ),
-        ],
-      ),
-      body: Center(
-        child: Text('This is the nutrition page were blogs are shown'),
-      ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[700],
-        title: Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
-      ),
-      body: Center(
-        child: Text('This is the profile page'),
-      ),
-    );
-  }
-}
