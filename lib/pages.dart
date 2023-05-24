@@ -59,3 +59,18 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+class WelcomePage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey[700],
+        title: Text('Fitly', style: Theme.of(context).textTheme.displayLarge),
+      ),
+      body: Center(
+        child: Text('This is the profile page'),
+      ),
+    );
+  }
+}
+

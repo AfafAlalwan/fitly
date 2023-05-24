@@ -1,10 +1,42 @@
+import 'package:fitly/features/authentication/controllers/authentication_repositary.dart';
+import 'package:fitly/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'pages.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:get/get.dart';
+
+
+void initializeFirebase() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) => Get.put(AuthenticationRepository()));
+  Get.put(AuthenticationRepository.instance);
+
+
+
+}
+// Charcoal Color.fromRGBO(38, 70, 83, 1.0)
+// Persian green Color.fromRGBO(42, 157, 143, 1.0)
+// Saffron Color.fromRGBO(233, 196, 106, 1.0)
+// Sandy brown Color.fromRGBO(244, 162, 97, 1.0)
+// burnt sienna Colors.orangeAccent[700]
 
 void main(){
+
+  initializeFirebase();
   runApp(MaterialApp(
       theme: ThemeData(
+        colorScheme: ColorScheme.light().copyWith(
+          primary: Color.fromRGBO(38, 70, 83, 1.0), // Set your primary color
+          secondary: Color.fromRGBO(244, 162, 97, 1.0), // Set your secondary color
+
+          // Define other custom colors as needed
+        ),
         textTheme: TextTheme(
           bodyLarge: TextStyle(
             fontFamily: "Ysabeau",
@@ -14,7 +46,7 @@ void main(){
           bodyMedium: TextStyle(
             fontFamily: "Ysabeau",
             fontSize: 14,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
           ),
           displayLarge: TextStyle(
             fontFamily: "DancingScript",
@@ -23,10 +55,18 @@ void main(){
             fontStyle: FontStyle.italic,
             color: Colors.orangeAccent[700],
           ),
+          titleLarge: TextStyle(
+            fontFamily: "DancingScript",
+            fontSize: 100,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.italic,
+            color: Colors.orangeAccent[700],
+          ),
           // add more styles as needed...
         ),
       ),
-      home: Fitly()));
+      home: const WelcomeScreen()));
+
 }
 
 class Fitly extends StatefulWidget {
