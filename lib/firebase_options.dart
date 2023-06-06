@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '882186087344',
     projectId: 'fitly-ab296',
     storageBucket: 'fitly-ab296.appspot.com',
+    androidClientId: '882186087344-69vh752mkd5ddgnmf0h711mritkbg0ke.apps.googleusercontent.com',
     iosClientId: '882186087344-rmgq94d91jcvj760thvsp5okej5srb7s.apps.googleusercontent.com',
     iosBundleId: 'com.example.fitly',
   );
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '882186087344',
     projectId: 'fitly-ab296',
     storageBucket: 'fitly-ab296.appspot.com',
+    androidClientId: '882186087344-69vh752mkd5ddgnmf0h711mritkbg0ke.apps.googleusercontent.com',
     iosClientId: '882186087344-rmgq94d91jcvj760thvsp5okej5srb7s.apps.googleusercontent.com',
     iosBundleId: 'com.example.fitly',
   );

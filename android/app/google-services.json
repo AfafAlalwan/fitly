@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "882186087344-69vh752mkd5ddgnmf0h711mritkbg0ke.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fitly",
+            "certificate_hash": "2644e06dfa796a6ed5cfb1ad1a503635df6e12dc"
+          }
+        },
+        {
           "client_id": "882186087344-562uf0frvj0fnu6ev0vt5b5p07ek5t6a.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "882186087344-562uf0frvj0fnu6ev0vt5b5p07ek5t6a.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "882186087344-rmgq94d91jcvj760thvsp5okej5srb7s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitly"
+              }
             }
           ]
         }

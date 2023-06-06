@@ -5,4 +5,13 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:replace="android:name"
+        android:name="androidx.multidex.MultiDexApplication">
+
+        <!-- Your other application configurations -->
+
+    </application>
 </manifest>

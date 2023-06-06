@@ -1,3 +1,4 @@
+import 'package:fitly/features/authentication/widgets/login_form_widget.dart';
 import 'package:fitly/features/authentication/widgets/signup_form_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class _WelcomeState extends State<WelcomeScreen> {
                 // Navigate to the sign-up page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignupFormWidget()),
+                  MaterialPageRoute(builder: (context) => const SignupFormWidget()),
                 );
               },
             ),
@@ -41,7 +42,7 @@ class _WelcomeState extends State<WelcomeScreen> {
                 // Navigate to the login page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignupFormWidget()),
+                  MaterialPageRoute(builder: (context) => const LoginFormWidget()),
                 );
               },
             ),

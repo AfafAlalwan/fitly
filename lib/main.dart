@@ -1,7 +1,10 @@
 import 'package:fitly/features/authentication/controllers/authentication_repositary.dart';
+import 'package:fitly/features/authentication/widgets/signup_form_widget.dart';
 import 'package:fitly/welcome.dart';
+import 'package:fitly/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'features/authentication/models/user_model.dart';
 import 'pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -11,19 +14,18 @@ import 'package:get/get.dart';
 void initializeFirebase() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthenticationRepository()));
   Get.put(AuthenticationRepository.instance);
-
-
+  Get.put(ProfileController());
 
 }
 // Charcoal Color.fromRGBO(38, 70, 83, 1.0)
 // Persian green Color.fromRGBO(42, 157, 143, 1.0)
 // Saffron Color.fromRGBO(233, 196, 106, 1.0)
-// Sandy brown Color.fromRGBO(244, 162, 97, 1.0)
+// Sandy brown Color.fromRGBO
+// (244, 162, 97, 1.0)
 // burnt sienna Colors.orangeAccent[700]
 
 void main(){
@@ -65,10 +67,9 @@ void main(){
           // add more styles as needed...
         ),
       ),
-      home: const WelcomeScreen()));
+      home: const WidgetTree()));
 
 }
-
 class Fitly extends StatefulWidget {
   const Fitly({Key? key}) : super(key: key);
 
@@ -78,17 +79,19 @@ class Fitly extends StatefulWidget {
 
 class _FitlyState extends State<Fitly> {
   int _currentIndex = 1;
-  List<Color> _iconColors = [Colors.orangeAccent.shade700,
-    Colors.orangeAccent, Colors.orangeAccent.shade700]; // initial colors for each icon
+  List<Color> _iconColors = [
+    Colors.orangeAccent.shade700,
+    Colors.orangeAccent,
+    Colors.orangeAccent.shade700
+  ]; // initial colors for each icon
 
   List<Widget> _pages = [
-    ActivityPage(),
-    NutritionPage(),
-    ProfilePage(),
+    ActivityPage(), // Change this to your StatefulWidget
+    NutritionPage(), // Change this to your StatefulWidget
+    ProfilePage(), // Change this to your StatefulWidget
   ];
 
   PageController _pageController = PageController(initialPage: 1);
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +102,6 @@ class _FitlyState extends State<Fitly> {
         onPageChanged: (index) {
           setState(() {
             _currentIndex = index;
-
           });
         },
       ),
@@ -107,7 +109,6 @@ class _FitlyState extends State<Fitly> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.blueGrey[700],
         currentIndex: _currentIndex,
-
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -116,10 +117,12 @@ class _FitlyState extends State<Fitly> {
               duration: Duration(milliseconds: 500),
               curve: Curves.easeInOut,
             );
-            _iconColors = [Colors.orangeAccent.shade700,
-            Colors.orangeAccent.shade700, Colors.orangeAccent.shade700];
+            _iconColors = [
+              Colors.orangeAccent.shade700,
+              Colors.orangeAccent.shade700,
+              Colors.orangeAccent.shade700
+            ];
             _iconColors[_currentIndex] = Colors.orangeAccent;
-           // print(index);
           });
         },
         items: [
@@ -135,7 +138,7 @@ class _FitlyState extends State<Fitly> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon:  Container(
+            icon: Container(
               width: 30,
               height: 30,
               child: SvgPicture.asset(
@@ -146,13 +149,12 @@ class _FitlyState extends State<Fitly> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon:  Container(
+            icon: Container(
               width: 30,
               height: 30,
               child: SvgPicture.asset(
                 "assets/icons/person-outline.svg",
                 color: _iconColors[2],
-
               ),
             ),
             label: '',
