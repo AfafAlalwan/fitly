@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+Fitness Application connected to Firebase
+
 ## UI
 
 
